@@ -1,9 +1,5 @@
-import test as p
+import homework2_rent as p
 
-"""
-Created on Sun Feb 19 18:38:39 2017
-@author: Christine lee and Wadood Chaudhary
-"""
 
 def test_rent():
     if (p.score_rent() > 0.05):

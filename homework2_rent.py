@@ -61,6 +61,8 @@ def predict_rent():
     predictedLabels = np.matrix(regr.predict(X_test))
     return X_test,y_test,predictedLabels
 	
+def test():
+	return score_rent()	
 	
 if __name__ == "__main__":
     print(score_rent())
