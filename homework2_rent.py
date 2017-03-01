@@ -1,13 +1,10 @@
 import pandas as pd
 import numpy as np
-from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import Ridge
-from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
 from sklearn import linear_model
 from sklearn.metrics import r2_score
 
+# Define the variable to store test and train data
 X=[]
 y=[]
 
@@ -18,11 +15,12 @@ def score_rent():
 
     contcols = ["fw", "seqno", "uf17"]
     df = df[df["uf17"] != 99999]
-    idx1 = pd.Index(df.columns.tolist())
-    df2 = pd.DataFrame(columns=contcols)
-    idx2 = pd.Index(df2.columns.tolist())
 
-    categories = idx1.difference(idx2).tolist()
+    index = pd.Index(df.columns.tolist())
+    df2 = pd.DataFrame(columns=contcols)
+    indexB = pd.Index(df2.columns.tolist())
+
+    categories = index.difference(indexB).tolist()
     dfcont = df[["fw", "seqno"]]
     dfcateg = df.drop(contcols, axis=1)
     data_dummies = pd.get_dummies(dfcateg,columns=categories)
@@ -31,11 +29,9 @@ def score_rent():
     Xvars = pd.concat([data_dummies, dfcont], axis=1)
 
     # Define the features
-    global X
     X= Xvars.values
 
     # Define the label data
-    global y
     y = df[["uf17"]].values
 
     # Split test and train data
@@ -65,4 +61,6 @@ def test():
 	return score_rent()	
 	
 if __name__ == "__main__":
+    print("Check the following two functions:")
     print(score_rent())
+	print(predict_rent())

@@ -1,8 +1,8 @@
-import homework2_rent as p
+import homework2_rent as h
 
 
 def test_rent():
-    if (p.score_rent() > 0.05):
+    if (h.score_rent() > 0.05):
         return 1
     else:
         return 0
